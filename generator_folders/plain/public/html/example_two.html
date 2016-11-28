@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <form id="features-form" action="example_two" method="POST">
+        <div class="form-group">
+
+          <label for="one">Filed One</label>
+          <input class="form-control" placeholder='Something here' id="one" name="one">
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="one">Filed Two</label>
+          <input class="form-control" placeholder='Something here too' id="two" name="two">
+
+        </div>
+
+        <div class="form-group">
+
+          <button type="submit" class="btn btn-primary">Go!</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Results:</h4>
+    </div>
+  </div>
+
+  #{
+    s = ''
+    if local_vars[:results]
+      s += '<div class="row"><div class="col-md-4">'
+
+      local_vars[:results].each do |k, v|
+        s += '<p>' + k + ': ' + v + '</p>'
+      end
+
+      s += '</div></div>'
+
+    end
+    
+    s   
+  }
+
+</div>

@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+
+require 'rhail'
+
+##
+# Exception in the bin/rhail for the case when user specifies wrong arguments for the rhail command.
+#
+class ArgError < StandardError; end
+
+begin
+  case ARGV[0]
+  when 'g', 'gen', 'generate'
+    type = ARGV[1]
+    raise ArgError unless type
+
+    puts
+    gen = Rhail::Generator.new(type: type, folder: ARGV[2])
+    puts 'Creating file structure ...'
+    gen.create_folder_with_app
+
+    install_dependencies = false # Later get from parameter
+    if type == 'json'
+      further_instructions = %Q(    Test it\n\tcurl -i -H 'Authorization: Token token="afbadb4ff8485c0adcba486b4ca90cc4"' http://127.0.0.1:9292/\n)
+    else
+      further_instructions = "    Go to http://127.0.0.1:9292 or wherever output tells you."
+    end
+
+    if install_dependencies
+      puts 'Installing dependencies ...'
+      gen.install_dependencies
+      done_message = %Q(
+
+  \e[32mDone!
+
+  What to do next?
+
+    $ cd #{gen.folder}/#{gen.type}
+    $ bundle exec rackup
+
+    #{further_instructions}
+
+    Enjoy!
+
+  \e[0m
+
+)
+    else
+      done_message = %Q(
+
+  \e[32mDone!
+
+  What to do next?
+
+    $ cd #{gen.folder}/#{gen.type}
+    $ gem install bundler
+    $ bundle install
+    $ bundle exec rackup
+
+    #{further_instructions}
+
+    Enjoy!
+
+  \e[0m
+
+)
+  end
+
+  puts done_message
+
+  else
+    raise ArgError
+  end
+rescue ArgError => e
+  puts Rhail::USAGE
+rescue => e
+  puts "\e[31mError happened: #{e.message}\e[0m"
+  raise e
+end

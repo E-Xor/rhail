@@ -1,0 +1,186 @@
+<html>
+  <head>
+    <title>Ruby Hail. SPA.</title>
+
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+  </head>
+
+  <body>
+
+      <div id="app">
+
+        <!-- Menu -->
+        <nav class="navbar navbar-default navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">Ruby Hail SPA</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <router-link to="/main" tag="li" active-class="active"><a>Home</a></router-link>
+                <router-link to="/example_one" tag="li" active-class="active"><a>Example One</a></router-link>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drop-down Menu <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">One</a></li>
+                    <li><a href="#">Two</a></li>
+                    <li><a href="#">Three</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Text</li>
+                    <li><a href="#">Four</a></li>
+                    <li><a href="#">Five</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Visit</a></li>
+                <li><a href="#">Jobs</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+        <router-view></router-view>
+      </div>
+
+      <template id="main">
+        <div><!- - This wrapping div is very important, template will work only with first child element- ->
+          <div class="jumbotron">
+            <div class="container">
+              <h1>Ruby Hail. SPA Example.</h1>
+              <p>Ea qui laoreet repudiandae neglegentur, cu detraxit euripidis vim, sit ex odio choro dicam. Cu eos lucilius postulant maiestatis, no alii commodo placerat per. Mei an dicta atomorum urbanitas, mei impetus noluisse in. Vim at solet viderer gloriatur, quo ut duis facete melius.</p>
+              <p>
+                <a class="btn btn-lg btn-primary" href="#">More info &raquo;</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+                <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+              </div>
+              <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+             </div>
+              <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+                <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+              </div>
+            </div>
+          </div> <!-- /container -->
+        </div>
+      </template>
+
+      <template id="another-component">
+        <div><!- - This wrapping div is very important, template will work only with first child element- ->
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <form id="features-form">
+
+                  <input type="hidden" name="csrf_token" value="local_vars[:csrf_token]" />
+
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" placeholder='John Doe' id="name" name="name" v-model="name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input class="form-control" placeholder='Atlanta' id="city" name="city" v-model="city">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <input class="form-control" placeholder='GA' id="state" name="state" v-model="state">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="zipcode">Zip</label>
+                    <input class="form-control" placeholder='30303' id="zipcode" name="zipcode" v-model="zipcode">
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-primary" v-on:click="sendData($event)">Add</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Results:</h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8">
+                <table id="people-table" class="table table-striped table-hover table-condensed table-responsive">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>City</th>
+                      <th>State</th>
+                      <th>Zip</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="p in peopleWithAddresses">
+                      <td><div class="person-name">{{p.name}}</div></td>
+                      <td><div class="person-city">{{p.city}}</div></td>
+                      <td><div class="person-state">{{p.state}}</div></td>
+                      <td><div class="person-zip">{{p.zipcode}}</div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </template>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <p class="footer-links">
+              <a href="#">Donec&nbsp;id&nbsp;elit</a>
+              <a href="#">Non&nbsp;mi&nbsp;porta</a>
+              <a href="#">Gravida&nbsp;at&nbsp;eget</a>
+              <a href="#">Metus</a>
+              <a href="#">Fusce&nbsp;dapibus</a>
+            </p>
+            <p>&copy; 2016 Company, Inc.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="//unpkg.com/jquery@3.1.1/dist/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//unpkg.com/vue@2.1.4/dist/vue.min.js"></script>
+    <script src="//unpkg.com/vue-router@2.1.1/dist/vue-router.min.js"></script>
+    <script src="//unpkg.com/axios@0.15.3/dist/axios.min.js"></script>
+    <script src="/js/another-component.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
