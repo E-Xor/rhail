@@ -3,16 +3,11 @@ require 'rhail'
 
 Gem::Specification.new do |s|
   s.name        = 'rhail'
-  s.version     = '0.0.1'
-  s.date        = '2017-02-12'
+  s.version     = '0.0.4'
+  s.date        = '2017-03-12'
   s.summary     = "Bunch of generators and functions to make you up and running fast in Rack web-app."
 
   s.description = <<-EOF
-
-|````\\     |    ||
-|____//     |____||
-|    \\     |    ||
-|     \\uby |    ||ail
 
 Ruby Hail is fast-by-design Rack-based nano-framework.
 It provides generator and helper to quickly create Rack-based web-apps.
@@ -43,4 +38,7 @@ EOF
 
   s.required_ruby_version = '~> 2.0' # Generated code was written and testend in ruby 2.3.0, however there's nothing specific to this ruby versions.
   s.add_dependency 'rack', '~> 2.0'
+
+  s.cert_chain  = ['certs/rhail-public-cert.pem']
+  s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 end

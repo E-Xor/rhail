@@ -15,8 +15,21 @@ It was born when I was looking for web frameworks for Go and people advocated to
 
 ## Use
 
+### Regular install
+
 ```
 gem install rhail
+```
+
+### More secure install
+
+```
+gem cert --add <(curl -Ls https://raw.github.com/E-Xor/rhail/master/certs/rhail-public-cert.pem)
+gem install rhail -P MediumSecurity
+```
+
+### The rest of installation process
+```
 rhail generate <plain|json|spa> path/to/folder # it will create directory with app structure
 cd path/to/folder
 # Install ruby via rvm if needed
