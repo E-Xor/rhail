@@ -3,7 +3,7 @@ require 'rhail'
 
 Gem::Specification.new do |s|
   s.name        = 'rhail'
-  s.version     = '0.0.4'
+  s.version     = '0.0.5'
   s.date        = '2017-03-12'
   s.summary     = "Bunch of generators and functions to make you up and running fast in Rack web-app."
 
