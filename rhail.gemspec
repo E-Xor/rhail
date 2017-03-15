@@ -3,8 +3,8 @@ require 'rhail'
 
 Gem::Specification.new do |s|
   s.name        = 'rhail'
-  s.version     = '0.0.5'
-  s.date        = '2017-03-12'
+  s.version     = '0.0.6'
+  s.date        = '2017-03-13'
   s.summary     = "Bunch of generators and functions to make you up and running fast in Rack web-app."
 
   s.description = <<-EOF
@@ -34,7 +34,7 @@ EOF
   s.extra_rdoc_files = []
   s.rdoc_options += ['-m', 'README.md', '-x', '/generator_folders/.*|rhail.gemspec', '--title', 'Ruby Hail']
 
-  s.post_install_message = Rhail::USAGE
+  # s.post_install_message = Rhail::USAGE
 
   s.required_ruby_version = '~> 2.0' # Generated code was written and testend in ruby 2.3.0, however there's nothing specific to this ruby versions.
   s.add_dependency 'rack', '~> 2.0'
