@@ -50,6 +50,8 @@ Enjoy!
 
 ### Plain
 
+[Watch video with detailed explanation](https://www.youtube.com/watch?v=BrtrmFLrK-8)
+
 ```
 rhail generate plain path/to/folder
 ```
