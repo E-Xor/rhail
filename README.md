@@ -4,6 +4,7 @@
 
 Ruby Hail is Rack-based nano framework. It's the fastest-by-design Rack-based framework. It requires less learning (besides Rack, you suppose to know it by this time) than any other framework. It works great for simple dynamic web-sites, single-page web-apps and microservices.
 
+[Official website](http://www.rubyhail.org)
 
 ## Why
 
